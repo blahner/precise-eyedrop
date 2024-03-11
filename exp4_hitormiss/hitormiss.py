@@ -7,24 +7,22 @@ Created on Wed May 10 14:23:25 2023
 """
 
 import os
-import glob
 import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
 import numpy as np
-import scipy
 
+root = os.path.join("/home", "blahner", "projects", "precise-eyedrop") #your path to project root
+save_path = os.path.join(root, "exp4_hitormiss", "output")
+data_path = os.path.join(root, "exp4_hitormiss", "data")
 
-#plot the ball-in-tube feedback mechanism
-root = '/Users/blahner/Documents/Python/ocular275/neckextension'
-is_save=False
-data_path = os.path.join(root, 'data')
-save_path = os.path.join(root, 'plots')
-data = pd.read_excel(os.path.join(data_path,  "head tilt v3.xlsx")) #"head_tilt_accuracy_x4_y0_z12.xlsx"))
+if not os.path.exists(save_path):
+    os.makedirs(save_path)
 
+is_save=True
+data = pd.read_excel(os.path.join(data_path, "head_tilt_data.xlsx"))
 data = data.iloc[:,:11] #discard the comments that were included in the xcel file
 
-angle_truth = [16.4, 35.59] #based on matlab calculations
+angle_truth = [16.4, 35.59] #based on calculations from code in "delivery_model" folder
 
 plt.figure
 plt.plot(data.loc[:,"Angle"], np.mean(data.iloc[:,1:],axis=1))
@@ -36,4 +34,5 @@ if is_save:
     plt.savefig(os.path.join(save_path, "neckext_plot.svg"))
     plt.savefig(os.path.join(save_path, "neckext_plot.png"))
 plt.show()
-#perform stats
+
+print("exited script with no erros")
