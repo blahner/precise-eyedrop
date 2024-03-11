@@ -35,4 +35,4 @@ if is_save:
     plt.savefig(os.path.join(save_path, "neckext_plot.png"))
 plt.show()
 
-print("exited script with no erros")
+print("exited script with no errors")

@@ -44,4 +44,6 @@ print("Feedback results")
 print("mean = {}".format(observations.mean()))
 print("STD = {}".format(np.std(observations)))
 print("median = {}".format(np.median(observations)))
-print("SEM = {}".format(observations.std()/np.sqrt(len(observations))))    
+print("SEM = {}".format(observations.std()/np.sqrt(len(observations))))  
+
+print("exited script with no errors")

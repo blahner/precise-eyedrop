@@ -64,3 +64,5 @@ if is_save:
     plt.savefig(os.path.join(save_path, "parameterverification_scatterplot.png"))
 plt.show()
 plt.clf()
+
+print("exited script with no errors")

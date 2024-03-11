@@ -185,4 +185,6 @@ print("Peak Amplitude Unanchored")
 print("mean = {}".format(paunanchored.mean()))
 print("median = {}".format(paunanchored.median()))
 print("STD = {}".format(paunanchored.std())) 
-print("SEM = {}".format(paunanchored.std()/np.sqrt(len(paunanchored))))     
+print("SEM = {}".format(paunanchored.std()/np.sqrt(len(paunanchored))))   
+
+print("exited script with no errors")
