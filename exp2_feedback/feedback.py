@@ -6,23 +6,22 @@ Created on Mon May  8 20:04:22 2023
 @author: blahner
 """
 import os
-import glob
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import numpy as np
 import scipy
 
-#plot the ball-in-tube feedback mechanism
+root = os.path.join("/home", "blahner", "projects", "precise-eyedrop") #your path to project root
+save_path = os.path.join(root, "exp2_feedback", "output")
+data_path = os.path.join(root, "exp2_feedback", "data")
 
-root = '/Users/blahner/Documents/Python/ocular275/feedback'
+if not os.path.exists(save_path):
+    os.makedirs(save_path)
+
+data = pd.read_excel(os.path.join(data_path, "feedback_data.xlsx"))
 is_save=True
-data_path = os.path.join(root, 'data')
-save_path = os.path.join(root, 'plots')
-data = pd.read_excel(os.path.join(data_path, "FeedbackV2.xlsx"))
-
 angle_truth = data.loc[0,"Angle of the feedback "]
-
 observations = data.loc[:,"Head tilt"].values
 
 #plot results
@@ -33,10 +32,10 @@ plt.xlabel("Position")
 plt.ylabel("Angle (degrees)")
 plt.ylim([20, 32])
 if is_save:
-    plt.savefig(os.path.join(save_path, "feedback_boxplotV2.svg"))
-    plt.savefig(os.path.join(save_path, "feedback_boxplotV2.png"))
+    plt.savefig(os.path.join(save_path, "feedback_boxplot.svg"))
+    plt.savefig(os.path.join(save_path, "feedback_boxplot.png"))
 plt.show()
-
+plt.clf()
 
 #perform stats
 res = scipy.stats.ttest_1samp(observations, popmean=angle_truth)
