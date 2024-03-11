@@ -13,10 +13,15 @@ import pandas as pd
 import seaborn as sns
 import numpy as np
 import scipy.signal
+import scipy.stats
 
-root = '/Users/blahner/Documents/Python/ocular275/steadiness'
-save_path = os.path.join(root, 'plots')
-data_path = os.path.join(root, 'data')
+root = os.path.join("/home", "blahner", "projects", "precise-eyedrop") #your path to project root
+save_path = os.path.join(root, "exp1_anchoring", "output")
+data_path = os.path.join(root, "exp1_anchoring", "data")
+
+if not os.path.exists(save_path):
+    os.makedirs(save_path)
+
 """
 #columns in excel file: ['Time', 'Orientation_1', 'Orientation_2', 'Orientation_3',
        'Orientation_4', 'X_Accel_True', 'Y_Accel_True', 'Z_Accel_True',
@@ -34,27 +39,27 @@ bound_sr = bound_sec * fs
 
 raw_plot_accel = True
 raw_plot_norm = False #whether to plot the raw data or not
-is_save = False
+is_save = True
 raw_accel_all_anchored = np.zeros((int(bound_sr*2 + 1),))
 raw_accel_all_unanchored = np.zeros((int(bound_sr*2 + 1),))
 
-subjects = ["Ben","Jesse","Carly","Seunghyeon"] #,"Jesse","Carly"] #,"Ben","Jesse"]
+subjects = ["Ben","Jesse","Carly","Seunghyeon"]
 for sub in subjects:
     #get list of files
     filenames = glob.glob(os.path.join(data_path, sub + "*.xlsx"))
+    assert(len(filenames) == 20) #20 files per subject
     
     for file in filenames:
         trial = int(file.split("trial_")[1].split(".")[0])
-        if file.split("_trial")[0].split("_")[1] == "free":
+        if file.split(f"{sub}_")[1].split("_trial")[0] == "free":
             device = "Unanchored"
-        elif file.split("_trial")[0].split("_")[1] == "constrained":
+        elif file.split(f"{sub}_")[1].split("_trial")[0] == "constrained":
             device = "Anchored"
         else:
             print("Incorrect naming convention used for whether device was used or not")
             
         #Read in neck extension txt files and plot results
         print("Loading subject {} trial {}".format(sub, trial))
-
         data = pd.read_excel(os.path.join(data_path, file))
         beg = - np.inf
         end = np.inf
@@ -96,6 +101,7 @@ for sub in subjects:
                 plt.ylabel('PSD [V**2/Hz]')
                 plt.title("Sub {} Condition {} Trial {}".format(sub, device, trial))
                 plt.show()
+                plt.clf()
             
             peak_freq = f[np.argmax(S_l1norm)]
             peak_amp = S_l1norm[np.argmax(S_l1norm)] #peak amplitude at the peak frequency
@@ -110,7 +116,6 @@ for sub in subjects:
         except:
             print("Skipping subject {} trial {}...".format(sub,trial))
             
-
 df = pd.DataFrame(steadiness_dict)
 
 if raw_plot_accel:
@@ -124,6 +129,7 @@ if raw_plot_accel:
         plt.savefig(os.path.join(save_path, "filtered_xaccel.svg"))
         plt.savefig(os.path.join(save_path, "filtered_xaccel.png"))
     plt.show()
+    plt.clf()
 
 sns.boxplot(data=df, x="Device", y="peak_freq", order=["Unanchored","Anchored"])
 sns.stripplot(data=df, x="Device", y="peak_freq",order=["Unanchored","Anchored"],edgecolor="black",linewidth=2)
@@ -132,6 +138,7 @@ if is_save:
     plt.savefig(os.path.join(save_path, "steadiness_peakfreq_boxplot.svg"))
     plt.savefig(os.path.join(save_path, "steadiness_peakfreq_boxplot.png"))
 plt.show()
+plt.clf()
 
 sns.boxplot(data=df, x="Device", y="peak_amp",order=["Unanchored","Anchored"])
 sns.stripplot(data=df, x="Device", y="peak_amp", order=["Unanchored","Anchored"], edgecolor="black",linewidth=2)
@@ -139,6 +146,7 @@ if is_save:
     plt.savefig(os.path.join(save_path, "steadiness_peakamp_boxplot.svg"))
     plt.savefig(os.path.join(save_path, "steadiness_peakamp_boxplot.png"))
 plt.show()
+plt.clf()
 
 df_anchored = df[df["Device"] == "Anchored"]
 df_unanchored = df[df["Device"] == "Unanchored"]
@@ -178,5 +186,3 @@ print("mean = {}".format(paunanchored.mean()))
 print("median = {}".format(paunanchored.median()))
 print("STD = {}".format(paunanchored.std())) 
 print("SEM = {}".format(paunanchored.std()/np.sqrt(len(paunanchored))))     
-
-
