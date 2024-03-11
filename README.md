@@ -25,11 +25,11 @@ See the description of the folder contents after the "#" in the directory tree b
 │   ├── data
 │   ├── feedback.py
 │   └── output
-├── exp3_placement #code and data pertaining to results "Experiment 2"
+├── exp3_placement #code and data pertaining to results "Experiment 3"
 │   ├── data
 │   ├── output
 │   └── placement.py
-├── exp4_hitormiss #code and data pertaining to results "Experiment 2"
+├── exp4_hitormiss #code and data pertaining to results "Experiment 4"
 │   ├── data
 │   ├── hitormiss.py
 │   └── output
