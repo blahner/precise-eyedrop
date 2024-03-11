@@ -1,5 +1,6 @@
 # precise-eyedrop
 This repository contains code and data to reproduce the numerical results and original plots in the manuscript:
+
 *George-Akpenyi, J., *Lahner, B., *Shim SH., *Smith, C., Singh, N., Murphy, M., Sibanda, L., Traverso G., and Hanumara N.
 A mechanical device for precise self-administration of ocular drugs.
 Human Factors in Healthcare, 2024.
