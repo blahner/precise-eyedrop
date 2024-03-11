@@ -40,7 +40,7 @@ if __name__ == '__main__':
     class arguments():
         def __init__(self):
             self.p = 10 #palpebral fissure height (distance between upper and lower eyelid), in mm
-            self.z = 12 #distance above the center of the eye, in mm
+            self.z = 14 #distance above the center of the eye, in mm
             self.x = 5 #distance away from the center of the eye, in mm
     args = arguments()
     
