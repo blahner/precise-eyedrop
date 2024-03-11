@@ -1,7 +1,7 @@
 # plots and figures
-.svg
-.png
-.jpg
+*svg
+*.png
+*.jpg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
