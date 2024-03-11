@@ -5,7 +5,7 @@ A mechanical device for precise self-administration of ocular drugs.
 Human Factors in Healthcare, 2024.
 In revision.
 
-* denotes equal first authorship
+"*" denotes equal first authorship
 ## Project folder structure
 See the description of the folder contents after the "#" in the directory tree below.
 ```
