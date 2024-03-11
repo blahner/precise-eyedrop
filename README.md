@@ -6,6 +6,8 @@ Human Factors in Healthcare, 2024.
 In revision.
 ## Project folder structure
 See the description of the folder contents after the "#" in the directory tree below.
+'''
+/path/to/your/project
 .
 ├── LICENSE
 ├── README.md
@@ -30,7 +32,7 @@ See the description of the folder contents after the "#" in the directory tree b
 │   └── output
 └── images #teaser image for this repository
     └── eyedrop_github_teaser.jpg
-
+'''
 ## Eyedrop delivery model
 
 This Matlab and Python code parameterizes eyedrop delivery based on the human's palpebral fissure height ($P$) (distance beetween upper and lower eyelid), the human's head tilt ($\theta_{tilt}$), the eyedrop bottle tip's distance away from the eye ($X$), and the eyedrop bottle tip's distance above the center of the eye ($Z$), where $X>0$; $P>0$; $Z>-P/2$; $0<=\theta_{tilt}<=\pi/2$. The model assumes a non-curved, 2D eye.
