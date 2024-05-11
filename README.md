@@ -56,37 +56,37 @@ $r_{Pb}=0$
 
 $r_{Pt}=P$
 
-$r_D=X^2+(Z+P/2)^2$
+$r_D=\sqrt{X^2+(Z+P/2)^2}$
 
-$P_b=0$
+$\theta_{Pb}=0$
 
-$P_t=\pi/2$
+$\theta_{Pt}=\pi/2$
 
-$D=arctan((Z+P/2)/X)$
+$\theta_{D}=arctan((Z+P/2)/X)$
 
 The x-axis location ($L$) of each point is then given by:
 
-$L_{Pb}=r_{Pb}*cos(P_b+\theta_{tilt})$
+$L_{Pb}=r_{Pb}*cos(\theta_{Pb}+\theta_{tilt})$
 
-$L_{Pt}=r_{Pt}*cos(P_t+\theta_{tilt})$
+$L_{Pt}=r_{Pt}*cos(\theta_{Pt}+\theta_{tilt})$
 
-$L_D=r_D*cos(D+\theta_{tilt})$
+$L_D=r_D*cos(\theta_D+\theta_{tilt})$
 
 The minimum head tilt ($\theta_{min}$) for a successful drop occurs when the location along the x-axis of the bottle tip ($D$) equals that of the bottom eyelid ($P_b$):
 
 $L_D=L_{Pb}$
 
-$r_D*cos(D+\theta_{min})=r_{Pb}*cos(P_b+\theta_{min})$
+$r_D*cos(\theta_D+\theta_{min})=r_{Pb}*cos(\theta_{Pb}+\theta_{min})$
 
-$r_D*cos(D+\theta_{min})=0$
+$r_D*cos(\theta_D+\theta_{min})=0$
 
 Ignoring the trivial solution of $r_D=0$, we get:
 
-$cos(D+\theta_{min})=0$
+$cos(\theta_D+\theta_{min})=0$
 
-$D+\theta_{min}=\pi/2$
+$\theta_D+\theta_{min}=\pi/2$
 
-$\theta_{min}=\pi/2-D$
+$\theta_{min}=\pi/2-\theta_D$
 
 $\theta_{min}=\pi/2-arctan((Z+P/2)/X)$
 
@@ -94,7 +94,7 @@ Similarly, the maximum head tilt ($\theta_{max}$) for a successful drop occurs w
 
 $L_D=L_{Pt}$
 
-$r_D*cos(D+\theta_{max})=r_{Pt}*cos(P_t+\theta_{max})$
+$r_D*cos(\theta_D+\theta_{max})=r_{Pt}*cos(\theta_{Pt}+\theta_{max})$
 
 $\theta_{max}$ can be solved for using this above equation, or, more simply, one can graphically see in Figure panel C:
 
